@@ -3,7 +3,7 @@ FROM java:8u66
 MAINTAINER Dylan Meissner "https://github.com/dylanmei"
 
 RUN apt-get update \
-  && apt-get install -y curl net-tools build-essential git wget unzip python python-setuptools python-dev python-numpy \
+  && apt-get install -y curl net-tools build-essential git wget unzip python python-setuptools python-dev python-numpy maven \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -20,13 +20,13 @@ RUN apt-get update \
 RUN easy_install py4j
 
 # MAVEN
-ENV MAVEN_VERSION 3.3.1
-ENV MAVEN_HOME /usr/apache-maven-$MAVEN_VERSION
-ENV PATH $PATH:$MAVEN_HOME/bin
-RUN curl -sL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
-  | gunzip \
-  | tar x -C /usr/ \
-  && ln -s $MAVEN_HOME /usr/maven
+# ENV MAVEN_VERSION 3.3.1
+# ENV MAVEN_HOME /usr/apache-maven-$MAVEN_VERSION
+# ENV PATH $PATH:$MAVEN_HOME/bin
+# RUN curl -sL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
+#   | gunzip \
+#   | tar x -C /usr/ \
+#   && ln -s $MAVEN_HOME /usr/maven
 
 # ZEPPELIN
 ENV ZEPPELIN_HOME         /zeppelin
