@@ -1,5 +1,5 @@
 master:
-  image: gettyimages/spark:1.3.1-hadoop-2.4
+  image: us.gcr.io/apontador-data/spark-lbs:getty-spark
   command: /usr/spark/bin/spark-class org.apache.spark.deploy.master.Master
   hostname: master
   expose:
@@ -18,12 +18,12 @@ master:
     - 8080:8080
 
 worker:
-  image: gettyimages/spark:1.3.1-hadoop-2.4
+  image: us.gcr.io/apontador-data/spark-lbs:getty-spark
   command: /usr/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
   hostname: worker
   environment:
     SPARK_WORKER_CORES: 2
-    SPARK_WORKER_MEMORY: 1g
+    SPARK_WORKER_MEMORY: 2g
     SPARK_WORKER_PORT: 8881
     SPARK_WORKER_WEBUI_PORT: 8081
   links:
@@ -42,7 +42,7 @@ worker:
     - ./data:/zeppelin/data
 
 zeppelin:
-  image: dylanmei/zeppelin:latest
+  image: us.gcr.io/apontador-data/spark-lbs:getty-spark-zeppelin
   hostname: zeppelin
   environment:
     ZEPPELIN_PORT: 8090
