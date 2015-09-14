@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SPARK_PROFILE=1.3
-SPARK_VERSION=1.3.1
-HADOOP_PROFILE=2.4
-HADOOP_VERSION=2.4.0
+SPARK_PROFILE=1.5
+SPARK_VERSION=1.5.0
+HADOOP_PROFILE=2.6
+HADOOP_VERSION=2.6.0
 
 curl -sL --retry 3 \
   "http://mirrors.ibiblio.org/apache/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_PROFILE.tgz" \
